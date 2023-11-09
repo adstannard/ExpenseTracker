@@ -9,9 +9,9 @@ import Foundation
 
 struct Expense: Identifiable, Codable {
     var id = UUID()
+    var timeStamp = Date()
+    var expenseDate = Date()
     let name: String
-    let expenseDate: Date
-    let timeStamp: Date
     let type: String
     let amount: Double
 }
