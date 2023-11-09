@@ -12,6 +12,7 @@
 		D7195F242AFD7D7800856DC0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D7195F232AFD7D7800856DC0 /* Assets.xcassets */; };
 		D7195F272AFD7D7800856DC0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D7195F262AFD7D7800856DC0 /* Preview Assets.xcassets */; };
 		D7195F302AFD917000856DC0 /* Expense.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7195F2F2AFD917000856DC0 /* Expense.swift */; };
+		D7195F322AFD9B3300856DC0 /* Expenses.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7195F312AFD9B3300856DC0 /* Expenses.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,6 +22,7 @@
 		D7195F232AFD7D7800856DC0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D7195F262AFD7D7800856DC0 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		D7195F2F2AFD917000856DC0 /* Expense.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Expense.swift; sourceTree = "<group>"; };
+		D7195F312AFD9B3300856DC0 /* Expenses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Expenses.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +76,7 @@
 			isa = PBXGroup;
 			children = (
 				D7195F2F2AFD917000856DC0 /* Expense.swift */,
+				D7195F312AFD9B3300856DC0 /* Expenses.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -156,6 +159,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D7195F322AFD9B3300856DC0 /* Expenses.swift in Sources */,
 				D7195F302AFD917000856DC0 /* Expense.swift in Sources */,
 				D7195F222AFD7D7700856DC0 /* ContentView.swift in Sources */,
 				D7195F202AFD7D7700856DC0 /* ExpenseTrackerApp.swift in Sources */,
