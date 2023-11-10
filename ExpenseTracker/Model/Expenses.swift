@@ -28,4 +28,6 @@ class Expenses {
         items = []
     }
     
+    var itemAmountTotal = 0.0
+    
 }

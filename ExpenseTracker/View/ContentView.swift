@@ -11,24 +11,29 @@ struct ContentView: View {
     
     @State private var expenses = Expenses()
     @State private var showingAddExpense = false
-    
+    @State private var totalExpense = 0.0
     
     var body: some View {
         NavigationView {
             List {
-                ForEach(expenses.items) { item in
-                    HStack {
-                        VStack(alignment: .leading) {
-                            Text(item.name)
-                                .font(.headline)
-                            Text(item.type)
-                        }
-                        
-                        Spacer()
-                        Text(item.amount, format: .currency(code: "GBP"))
-                    }
+                Section(footer: Text("Total")) {
+                    Text("£\(totalExpense)")
                 }
-                .onDelete(perform: removeItems)
+                Section(header: Text("Expense Items")) {
+                    ForEach(expenses.items) { item in
+                        HStack {
+                            VStack(alignment: .leading) {
+                                Text(item.name)
+                                    .font(.headline)
+                                Text(item.type)
+                            }
+                            
+                            Spacer()
+                            Text(item.amount, format: .currency(code: "GBP"))
+                        }
+                    }
+                    .onDelete(perform: removeItems)
+                }
             }
             .navigationTitle("Expense Tracker")
             .toolbar {
