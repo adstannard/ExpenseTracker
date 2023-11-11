@@ -17,7 +17,7 @@ struct ContentView: View {
         NavigationView {
             List {
                 Section(footer: Text("Total")) {
-                    Text("£\(expenses.totalExpense)")
+                    Text(expenses.totalExpense, format: .currency(code: "GBP"))
                 }
                 Section(header: Text("Expense Items")) {
                     ForEach(expenses.items) { item in
