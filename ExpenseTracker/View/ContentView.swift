@@ -36,6 +36,8 @@ struct ContentView: View {
                 }
             }
             .navigationTitle("Expense Tracker")
+            .onAppear(perform: expenseTotal)
+            
             .toolbar {
                 Button {
                     showingAddExpense = true
@@ -54,7 +56,11 @@ struct ContentView: View {
         expenses.items.remove(atOffsets: offsets)
     }
     
-    
+    func expenseTotal() {
+        for item in expenses.items {
+            totalExpense += item.amount
+        }
+    }
     
     
     
