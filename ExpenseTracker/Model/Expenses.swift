@@ -8,7 +8,20 @@
 import Foundation
 
 @Observable
-class Expenses {
+class Expenses: Equatable {
+    static func == (lhs: Expenses, rhs: Expenses) -> Bool {
+        return lhs.items == rhs.items
+    }
+    var totalExpense = 0.0
+    
+    func expenseTotal() {
+        totalExpense = 0.0
+        for item in items {
+            totalExpense += item.amount
+        }
+    }
+    
+    
     var items = [Expense]() {
         didSet {
             if let encoded = try? JSONEncoder().encode(items) {

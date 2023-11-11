@@ -11,13 +11,13 @@ struct ContentView: View {
     
     @State private var expenses = Expenses()
     @State private var showingAddExpense = false
-    @State private var totalExpense = 0.0
+ //   @State private var totalExpense = 0.0
     
     var body: some View {
         NavigationView {
             List {
                 Section(footer: Text("Total")) {
-                    Text("£\(totalExpense)")
+                    Text("£\(expenses.totalExpense)")
                 }
                 Section(header: Text("Expense Items")) {
                     ForEach(expenses.items) { item in
@@ -36,7 +36,7 @@ struct ContentView: View {
                 }
             }
             .navigationTitle("Expense Tracker")
-            .onAppear(perform: expenseTotal)
+            .onAppear(perform: expenses.expenseTotal)
             
             .toolbar {
                 Button {
@@ -54,15 +54,15 @@ struct ContentView: View {
     
     func removeItems(at offsets: IndexSet) {
         expenses.items.remove(atOffsets: offsets)
-        expenseTotal()
+        expenses.expenseTotal()
     }
     
-    func expenseTotal() {
-        totalExpense = 0.0
-        for item in expenses.items {
-            totalExpense += item.amount
-        }
-    }
+//    func expenseTotal() {
+//        expenses.totalExpense = 0.0
+//        for item in expenses.items {
+//            expenses.totalExpense += item.amount
+//        }
+//    }
     
     
     
