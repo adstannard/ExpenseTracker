@@ -39,6 +39,7 @@ struct AddView: View {
                     let item = Expense(name: name, type: type, amount: amount)
                     expenses.items.append(item)
                     expenses.expenseTotal()
+                    expenses.save()
                     dismiss()
                 }
             }
