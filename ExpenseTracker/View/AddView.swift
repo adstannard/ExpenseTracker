@@ -43,6 +43,7 @@ struct AddView: View {
             }
         }
     }
+    
 }
 #Preview {
     AddView(expenses: Expenses())

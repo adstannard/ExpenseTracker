@@ -54,9 +54,11 @@ struct ContentView: View {
     
     func removeItems(at offsets: IndexSet) {
         expenses.items.remove(atOffsets: offsets)
+        expenseTotal()
     }
     
     func expenseTotal() {
+        totalExpense = 0.0
         for item in expenses.items {
             totalExpense += item.amount
         }
