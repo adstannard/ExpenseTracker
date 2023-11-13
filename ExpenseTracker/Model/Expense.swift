@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Expense: Identifiable, Codable, Equatable {
+struct Expense: Identifiable, Codable, Equatable, Hashable {
     var id = UUID()
     var timeStamp = Date()
     var expenseDate = Date()

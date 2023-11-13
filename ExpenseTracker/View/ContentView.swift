@@ -11,7 +11,7 @@ struct ContentView: View {
     
     @State private var expenses = Expenses()
     @State private var showingAddExpense = false
-//    @State private var searchText = ""
+    @State private var searchText = ""
     
     let dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
@@ -19,6 +19,15 @@ struct ContentView: View {
         return formatter
     }()
     
+    var searchResults: [Expense] {
+        if searchText.isEmpty {
+            return expenses.items
+        } else {
+            return expenses.items.filter {
+                $0.name.localizedCaseInsensitiveContains(searchText)
+            }
+        }
+    }
     
     var body: some View {
         NavigationStack {
@@ -27,7 +36,7 @@ struct ContentView: View {
                     Text(expenses.totalExpense, format: .currency(code: "GBP"))
                 }
                 Section(header: Text("Expense Items")) {
-                    ForEach(expenses.items) { item in
+                    ForEach(searchResults, id: \.self) { item in
                         HStack {
                             VStack(alignment: .leading) {
                                 Text(item.name)
@@ -60,7 +69,7 @@ struct ContentView: View {
         .sheet(isPresented: $showingAddExpense) {
             AddView(expenses: expenses)
         }
-//        .searchable(text: $searchText)
+        .searchable(text: $searchText, prompt: "Search expenses")
     }
     
     
