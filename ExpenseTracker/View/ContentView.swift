@@ -11,6 +11,7 @@ struct ContentView: View {
     
     @State private var expenses = Expenses()
     @State private var showingAddExpense = false
+//    @State private var searchText = ""
     
     let dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
@@ -20,7 +21,7 @@ struct ContentView: View {
     
     
     var body: some View {
-        NavigationView {
+        NavigationStack {
             List {
                 Section(footer: Text("Total")) {
                     Text(expenses.totalExpense, format: .currency(code: "GBP"))
@@ -59,6 +60,7 @@ struct ContentView: View {
         .sheet(isPresented: $showingAddExpense) {
             AddView(expenses: expenses)
         }
+//        .searchable(text: $searchText)
     }
     
     
@@ -67,15 +69,6 @@ struct ContentView: View {
         expenses.expenseTotal()
         expenses.save()
     }
-    
-//    func expenseTotal() {
-//        expenses.totalExpense = 0.0
-//        for item in expenses.items {
-//            expenses.totalExpense += item.amount
-//        }
-//    }
-    
-    
     
 }
 
