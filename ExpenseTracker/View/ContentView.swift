@@ -11,7 +11,13 @@ struct ContentView: View {
     
     @State private var expenses = Expenses()
     @State private var showingAddExpense = false
- //   @State private var totalExpense = 0.0
+    
+    let dateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .full
+        return formatter
+    }()
+    
     
     var body: some View {
         NavigationView {
@@ -26,6 +32,10 @@ struct ContentView: View {
                                 Text(item.name)
                                     .font(.headline)
                                 Text(item.type)
+                                    .font(.caption)
+                                Text(dateFormatter.string(from: item.expenseDate))
+                                    .font(.caption)
+                                    .foregroundStyle(.secondary)
                             }
                             
                             Spacer()

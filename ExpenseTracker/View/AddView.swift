@@ -14,10 +14,11 @@ struct AddView: View {
     var expenses: Expenses
     
     @State private var name = ""
-    @State private var type = "Personal"
+    @State private var type = "Day Subsistence"
+    @State private var expenseDate = Date.now
     @State private var amount = 0.0
     
-    let types = ["Business", "Personal"]
+    let types = ["Day Subsistence", "Night Subsistence", "Fuel", "Motor Milage"]
     
     var body: some View {
         NavigationView {
@@ -30,13 +31,17 @@ struct AddView: View {
                     }
                 }
                 
+                DatePicker(selection: $expenseDate, in: ...Date.now, displayedComponents: .date) {
+                    Text("Expense Date")
+                }
+                
                 TextField("Amount", value: $amount, format: .currency(code: "GBP"))
                     .keyboardType(.decimalPad)
             }
             .navigationTitle("Add new expense")
             .toolbar {
                 Button("Save") {
-                    let item = Expense(name: name, type: type, amount: amount)
+                    let item = Expense(expenseDate: expenseDate, name: name, type: type, amount: amount)
                     expenses.items.append(item)
                     expenses.expenseTotal()
                     expenses.save()
