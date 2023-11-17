@@ -58,7 +58,6 @@ struct AddView: View {
             }
                 
                 Button {
-                    print("Button tapped")
                     showPicker.toggle()
                 } label: {
                     Label("Camera", systemImage: "camera")
@@ -69,6 +68,24 @@ struct AddView: View {
                         .cornerRadius(15)
                 }
                 .padding()
+                
+                Group {
+                    if let image = image {
+                            Image(uiImage: image)
+                                .resizable()
+                                .scaledToFit()
+                                .clipShape(RoundedRectangle(cornerRadius: /*@START_MENU_TOKEN@*/25.0/*@END_MENU_TOKEN@*/))
+                                .frame(minWidth: 0, maxWidth: .infinity)
+                                
+                    } else {
+                        Image(systemName: "photo.fill")
+                            .resizable()
+                            .scaledToFit()
+                            .opacity(0.1)
+                            .frame(minWidth: 0, maxWidth: .infinity)
+                            .padding(.horizontal)
+                    }
+                }
                 
                 Spacer()
                 
