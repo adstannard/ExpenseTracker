@@ -96,13 +96,10 @@ struct AddView: View {
                     .ignoresSafeArea()
             }
         }
-        
-
-        
-        
     }
-    
 }
+
+
 #Preview {
     AddView(expenses: Expenses())
 }
