@@ -17,6 +17,7 @@ struct AddView: View {
     @State private var type = "Day Subsistence"
     @State private var expenseDate = Date.now
     @State private var amount = 0.0
+    @State private var time: Date?
     
     @State private var showPicker = false
     @State private var image: UIImage?
@@ -49,7 +50,7 @@ struct AddView: View {
                 .navigationTitle("Add new expense")
                 .toolbar {
                     Button("Save") {
-                        let item = Expense(expenseDate: expenseDate, name: name, type: type, amount: amount)
+                        let item = Expense(timeStamp: time ?? Date.now, expenseDate: expenseDate, name: name, type: type, amount: amount)
                         expenses.items.append(item)
                         expenses.expenseTotal()
                         expenses.save()
@@ -91,7 +92,7 @@ struct AddView: View {
                 
             }
             .sheet(isPresented: $showPicker) {
-                ImagePicker(sourceType: .camera, selectedImage: $image)
+                ImagePicker(sourceType: .camera, selectedImage: $image, timeTaken: $time)
                     .ignoresSafeArea()
             }
         }
