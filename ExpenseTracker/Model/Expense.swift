@@ -14,4 +14,5 @@ struct Expense: Identifiable, Codable, Equatable, Hashable {
     let name: String
     let type: String
     let amount: Double
+    var imageName: String = "temp.png"
 }

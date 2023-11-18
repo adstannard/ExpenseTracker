@@ -49,9 +49,6 @@ class Expenses: Equatable {
     
     
     
-    
-    
-    
     // Below section saves and loads from UserDefaults
     
 //    var items = [Expense]() {

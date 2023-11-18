@@ -13,6 +13,7 @@ struct AddView: View {
     
     var expenses: Expenses
     
+    @State private var id = UUID()
     @State private var name = ""
     @State private var type = "Day Subsistence"
     @State private var expenseDate = Date.now
@@ -24,7 +25,14 @@ struct AddView: View {
     
     let types = ["Day Subsistence", "Night Subsistence", "Fuel", "Motor Milage"]
     
-    
+    func saveImage( id: UUID, image: UIImage) {
+        if let data = image.pngData() {
+            let filename = FileManager.documentsDirectory.appendingPathComponent("\(id).png")
+            try? data.write(to: filename)
+            print("Saved \(id).png")
+        }
+    }
+
     var body: some View {
         NavigationView {
             VStack {
@@ -54,6 +62,9 @@ struct AddView: View {
                         expenses.items.append(item)
                         expenses.expenseTotal()
                         expenses.save()
+                        if image !== nil {
+                            saveImage(id: id, image: image!)
+                        }
                         dismiss()
                     }
             }
