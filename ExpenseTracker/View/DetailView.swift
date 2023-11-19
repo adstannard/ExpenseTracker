@@ -17,14 +17,26 @@ struct DetailView: View {
         return formatter
     }()
     
-//   func loadImage() -> UIImage {
-//       let filename = FileManager.documentsDirectory.appendingPathComponent("\(expense.id).png")
-//           print("Finding \(expense.id).png")
-//           let imageData = try? Data(contentsOf: filename)
-//           if let image = UIImage(data: imageData) {
-//               return image
+    @State private var image: UIImage?
+    
+    func loadImage() -> UIImage? {
+        do {
+            let filename = FileManager.documentsDirectory.appendingPathComponent("\(expense.id).png")
+            print("Finding \(expense.id).png")
+            let imageData = try? Data(contentsOf: filename)
+            let image = UIImage(data: imageData!)
+            return image
+        } catch {
+            
+        }
+       
+//
+//
+//
+//           if let image = UIImage(data: imageData!)
+//                   return image
 //       }
-//    }
+    }
     
     
     var body: some View {
@@ -62,32 +74,35 @@ struct DetailView: View {
             .foregroundStyle(.secondary)
             .padding(.top)
             
-            Text("\(expense.id)")
-//            Image(uiImage: UIImage( loadImage())
-            
-//            Group {
-//                if let image = loadImage() {
-//                        Image(uiImage: image)
-//                            .resizable()
-//                            .scaledToFit()
-//                            .clipShape(RoundedRectangle(cornerRadius: /*@START_MENU_TOKEN@*/25.0/*@END_MENU_TOKEN@*/))
-//                            .frame(minWidth: 0, maxWidth: .infinity)
-//                            
-//                } else {
-//                    Image(systemName: "photo.fill")
-//                        .resizable()
-//                        .scaledToFit()
-//                        .opacity(0.1)
-//                        .frame(minWidth: 0, maxWidth: .infinity)
-//                        .padding(.horizontal)
-//                }
-//            }
+                        
+            Group {
+                if let image = image {
+                        Image(uiImage: image)
+                            .resizable()
+                            .scaledToFit()
+                            .clipShape(RoundedRectangle(cornerRadius: /*@START_MENU_TOKEN@*/25.0/*@END_MENU_TOKEN@*/))
+                            .frame(minWidth: 0, maxWidth: .infinity)
+                            
+                } else {
+                    Image(systemName: "photo.fill")
+                        .resizable()
+                        .scaledToFit()
+                        .opacity(0.1)
+                        .frame(minWidth: 0, maxWidth: .infinity)
+                        .padding(.horizontal)
+                }
+            }
             
             Spacer()
-            
+            Text("\(expense.id)")
+                .font(.caption2)
+                .foregroundStyle(.secondary)
         }
         .padding(.horizontal)
         .navigationTitle(expense.name)
+        .task {
+            image = loadImage()
+        }
     }
 }
 
