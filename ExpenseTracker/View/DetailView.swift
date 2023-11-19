@@ -19,9 +19,6 @@ struct DetailView: View {
     
     var body: some View {
         VStack {
-            Text(expense.name)
-                .font(.largeTitle)
-                .padding(20)
             HStack {
                 Label("Amount:", systemImage: "sterlingsign.circle.fill")
                     

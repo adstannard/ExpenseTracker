@@ -37,20 +37,24 @@ struct ContentView: View {
                 }
                 Section(header: Text("Expense Items")) {
                     ForEach(searchResults, id: \.self) { item in
-                        HStack {
-                            VStack(alignment: .leading) {
-                                Text(item.name)
-                                    .font(.headline)
-                                Text(item.type)
-                                    .font(.caption)
-                                Text(dateFormatter.string(from: item.expenseDate))
-                                    .font(.caption)
-                                    .foregroundStyle(.secondary)
-                                Text(item.timeStamp, format: .dateTime.hour().minute().second())
+                        
+                        NavigationLink {
+                            DetailView(expense: item)
+                        } label: {
+                            HStack {
+                                VStack(alignment: .leading) {
+                                    Text(item.name)
+                                        .font(.headline)
+                                    Text(item.type)
+                                        .font(.caption)
+                                    Text(dateFormatter.string(from: item.expenseDate))
+                                        .font(.caption)
+                                        .foregroundStyle(.secondary)
+//                                    Text(item.timeStamp, format: .dateTime.hour().minute().second())
+                                }
+                                Spacer()
+                                Text(item.amount, format: .currency(code: "GBP"))
                             }
-                            
-                            Spacer()
-                            Text(item.amount, format: .currency(code: "GBP"))
                         }
                     }
                     .onDelete(perform: removeItems)
