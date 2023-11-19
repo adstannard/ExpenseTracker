@@ -14,3 +14,10 @@ display a running total of the amount to be claimed
 Add your source code to a version control tool (such as GitHub) and include a link to the project code and any other relevant supporting evidence in your idea submission (screenshots of the app being run in development environments such as Android Studio or Xcode would be helpful, but are not necessary if the application can be built using these tools). The complied project is not required.
 
 The app should contain only unclassified information and be easy to use. It should be built using Swift or Kotlin, but you should not pay to have it published or deployed into the app stores(!). The mark-scheme is attached on the right-side of this page, and we expect completion of the project to take around 20 hours.
+
+
+Need to fix:
+
+Image file size (too large)
+Ability to delete images
+Option to have no image without crash
