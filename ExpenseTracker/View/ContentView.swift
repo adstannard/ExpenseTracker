@@ -50,7 +50,6 @@ struct ContentView: View {
                                     Text(dateFormatter.string(from: item.expenseDate))
                                         .font(.caption)
                                         .foregroundStyle(.secondary)
-//                                    Text(item.timeStamp, format: .dateTime.hour().minute().second())
                                 }
                                 Spacer()
                                 Text(item.amount, format: .currency(code: "GBP"))
