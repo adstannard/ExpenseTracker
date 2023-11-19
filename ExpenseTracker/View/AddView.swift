@@ -13,23 +13,23 @@ struct AddView: View {
     
     var expenses: Expenses
     
-    @State private var id = UUID()
+    @State private var id = UUID().uuidString
     @State private var name = ""
     @State private var type = "Day Subsistence"
     @State private var expenseDate = Date.now
     @State private var amount = 0.0
     @State private var time: Date?
-    
+    @State private var imageName = "image"
     @State private var showPicker = false
     @State private var image: UIImage?
     
     let types = ["Day Subsistence", "Night Subsistence", "Fuel", "Motor Milage"]
     
-    func saveImage( id: UUID, image: UIImage) {
+    func saveImage(imageName: String, image: UIImage) {
         if let data = image.pngData() {
-            let filename = FileManager.documentsDirectory.appendingPathComponent("\(id).png")
+            let filename = FileManager.documentsDirectory.appendingPathComponent("\(imageName).png")
             try? data.write(to: filename)
-            print("Saved \(id).png")
+            print("Saved \(imageName).png")
         }
     }
 
@@ -63,7 +63,8 @@ struct AddView: View {
                         expenses.expenseTotal()
                         expenses.save()
                         if image !== nil {
-                            saveImage(id: id, image: image!)
+                            imageName = expenses.items.last?.id ?? "image"
+                            saveImage(imageName: imageName, image: image!)
                         }
                         dismiss()
                     }

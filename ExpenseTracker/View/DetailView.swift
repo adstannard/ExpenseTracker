@@ -62,13 +62,24 @@ struct DetailView: View {
             .foregroundStyle(.secondary)
             .padding(.top)
             
+            Text("\(expense.id)")
 //            Image(uiImage: UIImage( loadImage())
             
 //            Group {
-//                if FileManager().docExist(named: "\(expense.id).png") {
-//                    Image(uiImage: loadImage(with: expense.id))
+//                if let image = loadImage() {
+//                        Image(uiImage: image)
+//                            .resizable()
+//                            .scaledToFit()
+//                            .clipShape(RoundedRectangle(cornerRadius: /*@START_MENU_TOKEN@*/25.0/*@END_MENU_TOKEN@*/))
+//                            .frame(minWidth: 0, maxWidth: .infinity)
+//                            
 //                } else {
-//                    Text("No Photo")
+//                    Image(systemName: "photo.fill")
+//                        .resizable()
+//                        .scaledToFit()
+//                        .opacity(0.1)
+//                        .frame(minWidth: 0, maxWidth: .infinity)
+//                        .padding(.horizontal)
 //                }
 //            }
             

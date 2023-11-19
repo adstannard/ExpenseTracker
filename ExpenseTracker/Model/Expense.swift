@@ -8,7 +8,7 @@
 import Foundation
 
 struct Expense: Identifiable, Codable, Equatable, Hashable {
-    var id = UUID()
+    var id = UUID().uuidString
     var timeStamp = Date()
     var expenseDate = Date()
     let name: String
