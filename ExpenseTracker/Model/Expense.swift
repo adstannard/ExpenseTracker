@@ -14,5 +14,8 @@ struct Expense: Identifiable, Codable, Equatable, Hashable {
     let name: String
     let type: String
     let amount: Double
-    var imageName: String = "temp.png"
 }
+
+let testData = [
+    Expense(name: "Example Expense 1", type: "Day Subsistenace", amount: 12.00)
+]

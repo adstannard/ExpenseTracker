@@ -16,6 +16,4 @@ extension FileManager {
     func docExist(named docName: String) -> Bool {
         fileExists(atPath: FileManager.documentsDirectory.appendingPathComponent(docName).path)
     }
-    
-    
 }
