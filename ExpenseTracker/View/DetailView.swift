@@ -82,6 +82,18 @@ struct DetailView: View {
                             .scaledToFit()
                             .clipShape(RoundedRectangle(cornerRadius: /*@START_MENU_TOKEN@*/25.0/*@END_MENU_TOKEN@*/))
                             .frame(minWidth: 0, maxWidth: .infinity)
+                            .overlay(
+                                HStack {
+                                    Label("Receipt Photo Timestamp:", systemImage: "camera")
+                                    Text(expense.timeStamp, format: .dateTime.hour().minute().second())
+                                }
+                                .font(.caption)
+                                .padding(5)
+                                .foregroundColor(.white)
+                                .background(Color.black.opacity(0.6))
+                                .cornerRadius(15),
+                                alignment: .bottom
+                            )
                             
                 } else {
                     Image(systemName: "photo.fill")
