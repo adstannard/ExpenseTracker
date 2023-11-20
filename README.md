@@ -18,6 +18,8 @@ The app should contain only unclassified information and be easy to use. It shou
 
 Need to fix:
 
-Image file size (too large)
-Ability to delete images
-Option to have no image without crash
+1. Image file size (too large)
+2. Ability to delete images
+3. Option to have no image without crash
+4. Overlay timestamp on image
+5. Check timestamp from metadata
