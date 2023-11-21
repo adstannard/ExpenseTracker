@@ -91,7 +91,8 @@ struct DetailView: View {
                                 .padding(5)
                                 .foregroundColor(.white)
                                 .background(Color.black.opacity(0.6))
-                                .cornerRadius(15),
+                                .cornerRadius(15)
+                                .padding(),
                                 alignment: .bottom
                             )
                             
