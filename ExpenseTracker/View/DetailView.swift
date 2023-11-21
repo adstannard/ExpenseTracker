@@ -20,24 +20,18 @@ struct DetailView: View {
     @State private var image: UIImage?
     
     func loadImage() -> UIImage? {
-        do {
+        if FileManager().docExist(named: "\(expense.id).png") {
             let filename = FileManager.documentsDirectory.appendingPathComponent("\(expense.id).png")
             print("Finding \(expense.id).png")
             let imageData = try? Data(contentsOf: filename)
             let image = UIImage(data: imageData!)
             return image
-        } catch {
-            
+        } else {
+            let image = UIImage(systemName: "photo.fill")
+            return image
         }
-       
-//
-//
-//
-//           if let image = UIImage(data: imageData!)
-//                   return image
-//       }
     }
-    
+       
     
     var body: some View {
         VStack {
@@ -118,7 +112,9 @@ struct DetailView: View {
         .padding(.horizontal)
         .navigationTitle(expense.name)
         .task {
-            image = loadImage()
+            if FileManager().docExist(named: "\(expense.id).png") {
+                image = loadImage()
+            }
         }
     }
 }
