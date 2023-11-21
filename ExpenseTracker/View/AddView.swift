@@ -84,11 +84,14 @@ struct AddView: View {
                 
                 Group {
                     if let image = image {
+                        VStack {
                             Image(uiImage: image)
-                                .resizable()
-                                .scaledToFit()
-                                .clipShape(RoundedRectangle(cornerRadius: /*@START_MENU_TOKEN@*/25.0/*@END_MENU_TOKEN@*/))
+                                    .resizable()
+                                    .scaledToFit()
+                                    .clipShape(RoundedRectangle(cornerRadius: /*@START_MENU_TOKEN@*/25.0/*@END_MENU_TOKEN@*/))
                                 .frame(minWidth: 0, maxWidth: .infinity)
+ //                           Text(time!, format: .dateTime.hour().minute().second())
+                        }
                                 
                     } else {
                         Image(systemName: "photo.fill")
@@ -101,7 +104,6 @@ struct AddView: View {
                 }
                 
                 Spacer()
-                
             }
             .sheet(isPresented: $showPicker) {
                 ImagePicker(sourceType: .camera, selectedImage: $image, timeTaken: $time)
