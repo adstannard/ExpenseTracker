@@ -65,14 +65,16 @@ struct DetailView: View {
                 Text(dateFormatter.string(from: expense.expenseDate))
                     .font(.caption)
             }
-        
-            HStack {
-                Label("Receipt Photo Timestamp:", systemImage: "camera")
-                Text(expense.timeStamp, format: .dateTime.hour().minute().second())
-            }
-            .font(.caption)
-            .foregroundStyle(.secondary)
-            .padding(.top)
+            Spacer()
+// Image timestamp added to image overlay so removed here
+            
+//            HStack {
+//                Label("Receipt Photo Timestamp:", systemImage: "camera")
+//                Text(expense.timeStamp, format: .dateTime.hour().minute().second())
+//            }
+//            .font(.caption)
+//            .foregroundStyle(.secondary)
+//            .padding(.top)
             
                         
             Group {
@@ -107,9 +109,11 @@ struct DetailView: View {
             }
             
             Spacer()
-            Text("\(expense.id)")
-                .font(.caption2)
-                .foregroundStyle(.secondary)
+// Show the id of the expense
+            
+//            Text("\(expense.id)")
+//                .font(.caption2)
+//                .foregroundStyle(.secondary)
         }
         .padding(.horizontal)
         .navigationTitle(expense.name)
