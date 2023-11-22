@@ -106,7 +106,7 @@ struct AddView: View {
                 Spacer()
             }
             .sheet(isPresented: $showPicker) {
-                ImagePicker(sourceType: .camera, selectedImage: $image, timeTaken: $time)
+                ImagePicker(sourceType: .photoLibrary, selectedImage: $image, timeTaken: $time)
                     .ignoresSafeArea()
             }
         }

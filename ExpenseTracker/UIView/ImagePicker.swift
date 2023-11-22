@@ -12,7 +12,7 @@ import PhotosUI
 
 struct ImagePicker: UIViewControllerRepresentable {
     
-    var sourceType: UIImagePickerController.SourceType = .camera
+    var sourceType: UIImagePickerController.SourceType = .photoLibrary
     
     @Binding var selectedImage: UIImage?
     @Binding var timeTaken: Date?
@@ -22,7 +22,7 @@ struct ImagePicker: UIViewControllerRepresentable {
     
     func makeUIViewController(context: UIViewControllerRepresentableContext<ImagePicker>) -> UIImagePickerController {
         let imagePicker = UIImagePickerController()
-        imagePicker.allowsEditing = false
+        imagePicker.allowsEditing = true
         imagePicker.sourceType = sourceType
         imagePicker.delegate = context.coordinator
         return imagePicker
@@ -46,7 +46,7 @@ struct ImagePicker: UIViewControllerRepresentable {
             if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
                 parent.selectedImage = image
                 print("image selected")
-                
+
                 
                 // Check for photo library permissions
                 let status = PHPhotoLibrary.authorizationStatus()
@@ -54,19 +54,22 @@ struct ImagePicker: UIViewControllerRepresentable {
                     PHPhotoLibrary.requestAuthorization({status in
                         })
                 }
+                var asset: PHAsset?
+                asset = info[UIImagePickerController.InfoKey.phAsset] as? PHAsset
+                if asset == nil { print("asset nil")}
                 
-                
-                   
-                if let asset = info[UIImagePickerController.InfoKey.phAsset] as? PHAsset {
-                    parent.timeTaken = asset.creationDate
-                    print("asset if condition")
-                    print(parent.timeTaken as Any)
+                if let asset = asset {
+                    if let timeStamp = asset.creationDate {
+                        print("Creation Date: \(timeStamp)")
+                    }
                 }
                 
-                
-                
-                
-                
+                   
+//                if let asset = info[UIImagePickerController.InfoKey.phAsset] as? PHAsset {
+//                    parent.timeTaken = asset.creationDate
+//                    print("asset if condition")
+//                    print(parent.timeTaken as Any)
+//                }
                 
             }
             parent.presentationMode.wrappedValue.dismiss()

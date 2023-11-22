@@ -18,7 +18,8 @@ struct DetailView: View {
     }()
     
     @State private var image: UIImage?
-    
+    @State private var time: String?
+
     func loadImage() -> UIImage? {
         if FileManager().docExist(named: "\(expense.id).png") {
             let filename = FileManager.documentsDirectory.appendingPathComponent("\(expense.id).png")
@@ -32,6 +33,20 @@ struct DetailView: View {
         }
     }
        
+    func imageEXIF() -> String? {
+        if FileManager().docExist(named: "\(expense.id).png") {
+            let filename = FileManager.documentsDirectory.appendingPathComponent("\(expense.id).png")
+            print("Getting EXIF data")
+            let  cgiSrc = CGImageSourceCreateWithURL(filename as CFURL, nil)
+            let cfD:CFDictionary = CGImageSourceCopyPropertiesAtIndex(cgiSrc!, 0, nil)!
+            let nsDic = NSDictionary(dictionary: cfD)
+            print(nsDic.description)
+            return nsDic.description
+        } else {
+            return "no timestamp found"
+        }
+    }
+    
     
     var body: some View {
         VStack {
@@ -59,6 +74,8 @@ struct DetailView: View {
                 Text(dateFormatter.string(from: expense.expenseDate))
                     .font(.caption)
             }
+            
+            
             Spacer()
 // Image timestamp added to image overlay so removed here
             
@@ -114,6 +131,7 @@ struct DetailView: View {
         .task {
             if FileManager().docExist(named: "\(expense.id).png") {
                 image = loadImage()
+                time = imageEXIF()
             }
         }
     }

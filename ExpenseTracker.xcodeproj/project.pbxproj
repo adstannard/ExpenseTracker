@@ -30,6 +30,7 @@
 		D7195F332AFD9D3700856DC0 /* AddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddView.swift; sourceTree = "<group>"; };
 		D7195F352B00374000856DC0 /* FileManager-DocDir.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileManager-DocDir.swift"; sourceTree = "<group>"; };
 		D7195F382B01136800856DC0 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		D7850F912B0E2E12000043E1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		D7F6A87D2B09598E0099B5DB /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -63,6 +64,7 @@
 		D7195F1E2AFD7D7700856DC0 /* ExpenseTracker */ = {
 			isa = PBXGroup;
 			children = (
+				D7850F912B0E2E12000043E1 /* Info.plist */,
 				D7195F1F2AFD7D7700856DC0 /* ExpenseTrackerApp.swift */,
 				D7195F2E2AFD912000856DC0 /* View */,
 				D7195F372B0112E400856DC0 /* UIView */,
@@ -323,9 +325,11 @@
 				DEVELOPMENT_TEAM = V7G849S9UN;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ExpenseTracker/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "";
 				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_NSCameraUsageDescription = "Allow access to camera to add receipt image";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Allow access to camera roll";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Allow access to photo metadata - timestamp";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -356,9 +360,11 @@
 				DEVELOPMENT_TEAM = V7G849S9UN;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ExpenseTracker/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "";
 				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_NSCameraUsageDescription = "Allow access to camera to add receipt image";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Allow access to camera roll";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Allow access to photo metadata - timestamp";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
