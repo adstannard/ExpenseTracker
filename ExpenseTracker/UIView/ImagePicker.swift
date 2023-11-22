@@ -8,10 +8,11 @@
 import SwiftUI
 import UIKit
 import Photos
+import PhotosUI
 
 struct ImagePicker: UIViewControllerRepresentable {
     
-    var sourceType: UIImagePickerController.SourceType = .photoLibrary
+    var sourceType: UIImagePickerController.SourceType = .camera
     
     @Binding var selectedImage: UIImage?
     @Binding var timeTaken: Date?
@@ -44,10 +45,28 @@ struct ImagePicker: UIViewControllerRepresentable {
         func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
             if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
                 parent.selectedImage = image
+                print("image selected")
                 
+                
+                // Check for photo library permissions
+                let status = PHPhotoLibrary.authorizationStatus()
+                if status == .notDetermined {
+                    PHPhotoLibrary.requestAuthorization({status in
+                        })
+                }
+                
+                
+                   
                 if let asset = info[UIImagePickerController.InfoKey.phAsset] as? PHAsset {
                     parent.timeTaken = asset.creationDate
+                    print("asset if condition")
+                    print(parent.timeTaken as Any)
                 }
+                
+                
+                
+                
+                
                 
             }
             parent.presentationMode.wrappedValue.dismiss()
