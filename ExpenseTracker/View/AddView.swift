@@ -26,10 +26,10 @@ struct AddView: View {
     let types = ["Day Subsistence", "Night Subsistence", "Fuel", "Motor Milage"]
     
     func saveImage(imageName: String, image: UIImage) {
-        if let data = image.pngData() {
-            let filename = FileManager.documentsDirectory.appendingPathComponent("\(imageName).png")
+        if let data = image.jpegData(compressionQuality: 0.3) {
+            let filename = FileManager.documentsDirectory.appendingPathComponent("\(imageName).jpg")
             try? data.write(to: filename)
-            print("Saved \(imageName).png")
+            print("Saved \(imageName).jpg")
         }
     }
 

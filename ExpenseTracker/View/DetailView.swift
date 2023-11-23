@@ -21,9 +21,9 @@ struct DetailView: View {
     @State private var time: String?
 
     func loadImage() -> UIImage? {
-        if FileManager().docExist(named: "\(expense.id).png") {
-            let filename = FileManager.documentsDirectory.appendingPathComponent("\(expense.id).png")
-            print("Finding \(expense.id).png")
+        if FileManager().docExist(named: "\(expense.id).jpg") {
+            let filename = FileManager.documentsDirectory.appendingPathComponent("\(expense.id).jpg")
+            print("Finding \(expense.id).jpg")
             let imageData = try? Data(contentsOf: filename)
             let image = UIImage(data: imageData!)
             return image
@@ -34,8 +34,8 @@ struct DetailView: View {
     }
        
     func imageEXIF() -> String? {
-        if FileManager().docExist(named: "\(expense.id).png") {
-            let filename = FileManager.documentsDirectory.appendingPathComponent("\(expense.id).png")
+        if FileManager().docExist(named: "\(expense.id).jpg") {
+            let filename = FileManager.documentsDirectory.appendingPathComponent("\(expense.id).jpg")
             print("Getting EXIF data")
             let  cgiSrc = CGImageSourceCreateWithURL(filename as CFURL, nil)
             let cfD:CFDictionary = CGImageSourceCopyPropertiesAtIndex(cgiSrc!, 0, nil)!
@@ -129,7 +129,7 @@ struct DetailView: View {
         .padding(.horizontal)
         .navigationTitle(expense.name)
         .task {
-            if FileManager().docExist(named: "\(expense.id).png") {
+            if FileManager().docExist(named: "\(expense.id).jpg") {
                 image = loadImage()
                 time = imageEXIF()
             }

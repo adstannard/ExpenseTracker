@@ -46,7 +46,6 @@ struct ImagePicker: UIViewControllerRepresentable {
             if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
                 parent.selectedImage = image
                 print("image selected")
-
                 
                 // Check for photo library permissions
                 let status = PHPhotoLibrary.authorizationStatus()
