@@ -22,7 +22,9 @@ struct AddView: View {
     @State private var imageName = "image"
     @State private var showPicker = false
     @State private var image: UIImage?
-      
+    
+    @FocusState private var amountIsFocused: Bool
+    
     let types = ["Day Subsistence", "Night Subsistence", "Fuel", "Motor Milage"]
     
     var body: some View {
@@ -32,35 +34,52 @@ struct AddView: View {
                     Section(header: Text("Expense Details")) {
                         TextField("Name", text: $name)
                         
-                        Picker("Type", selection: $type) {
-                            ForEach(types, id: \.self) {
-                                Text($0)
-                            }
-                        }
+                        TextField("Amount", value: $amount, format: .currency(code: "GBP"))
+                            .keyboardType(.decimalPad)
+                            .focused($amountIsFocused)
                         
                         DatePicker(selection: $expenseDate, in: ...Date.now, displayedComponents: .date) {
                             Text("Expense Date")
                         }
                         
-                        TextField("Amount", value: $amount, format: .currency(code: "GBP"))
-                            .keyboardType(.decimalPad)
+                        Picker("Type", selection: $type) {
+                            ForEach(types, id: \.self) {
+                                Text($0)
+                            }
+                        }
                     }
                 }
                 .frame(maxHeight: 250)
                 .navigationTitle("Add new expense")
                 .toolbar {
-                    Button("Save") {
-                        let item = Expense(timeStamp: time ?? Date.now, expenseDate: expenseDate, name: name, type: type, amount: amount)
-                        expenses.items.append(item)
-                        expenses.expenseTotal()
-                        expenses.save()
-                        if image !== nil {
-                            imageName = expenses.items.last?.id ?? "image"
-                            expenses.saveImage(imageName: imageName, image: image!)
+                    ToolbarItem(placement: ToolbarItemPlacement.topBarTrailing) {
+                        Button("Save") {
+                            let item = Expense(timeStamp: time ?? Date.now, expenseDate: expenseDate, name: name, type: type, amount: amount)
+                            expenses.items.append(item)
+                            expenses.expenseTotal()
+                            expenses.save()
+                            if image !== nil {
+                                imageName = expenses.items.last?.id ?? "image"
+                                expenses.saveImage(imageName: imageName, image: image!)
+                            }
+                            dismiss()
                         }
-                        dismiss()
                     }
-            }
+                    
+                    ToolbarItem(placement: .keyboard) {
+                        Spacer()
+                        Button("Done") {
+                            amountIsFocused = false
+                        }
+                    
+                    }
+                    
+                    
+                    
+                    
+                    
+                }
+ 
                 
                 HStack {
                     Button {
