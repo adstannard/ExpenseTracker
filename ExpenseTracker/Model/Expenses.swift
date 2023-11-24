@@ -56,7 +56,15 @@ class Expenses: Equatable {
         }
     }
     
-    
+    func deleteImage(imageName: String) {
+        if FileManager().docExist(named: "\(imageName).jpg") {
+            let filename = FileManager.documentsDirectory.appendingPathComponent("\(imageName).jpg")
+            try! FileManager().removeItem(at: filename)
+            print("Deleting \(imageName).jpg")
+        } else {
+            print("File not found")
+        }
+    }
     
     
     

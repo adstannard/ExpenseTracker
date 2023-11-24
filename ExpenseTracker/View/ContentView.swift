@@ -78,6 +78,10 @@ struct ContentView: View {
     
     
     func removeItems(at offsets: IndexSet) {
+        for i in offsets.makeIterator() {
+            let item = expenses.items[i]
+            expenses.deleteImage(imageName: item.id)
+        }
         expenses.items.remove(atOffsets: offsets)
         expenses.expenseTotal()
         expenses.save()
