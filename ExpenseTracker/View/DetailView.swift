@@ -32,20 +32,22 @@ struct DetailView: View {
             return image
         }
     }
-       
-    func imageEXIF() -> String? {
-        if FileManager().docExist(named: "\(expense.id).jpg") {
-            let filename = FileManager.documentsDirectory.appendingPathComponent("\(expense.id).jpg")
-            print("Getting EXIF data")
-            let  cgiSrc = CGImageSourceCreateWithURL(filename as CFURL, nil)
-            let cfD:CFDictionary = CGImageSourceCopyPropertiesAtIndex(cgiSrc!, 0, nil)!
-            let nsDic = NSDictionary(dictionary: cfD)
-            print(nsDic.description)
-            return nsDic.description
-        } else {
-            return "no timestamp found"
-        }
-    }
+  
+//    File saved as PNG or JPEG does not contain DateTimeOriginal in EXIF as this is stripped
+    
+//    func imageEXIF() -> String? {
+//        if FileManager().docExist(named: "\(expense.id).jpg") {
+//            let filename = FileManager.documentsDirectory.appendingPathComponent("\(expense.id).jpg")
+//            print("Getting EXIF data")
+//            let  cgiSrc = CGImageSourceCreateWithURL(filename as CFURL, nil)
+//            let cfD:CFDictionary = CGImageSourceCopyPropertiesAtIndex(cgiSrc!, 0, nil)!
+//            let nsDic = NSDictionary(dictionary: cfD)
+//            print(nsDic.description)
+//            return nsDic.description
+//        } else {
+//            return "no timestamp found"
+//        }
+//    }
     
     
     var body: some View {
@@ -77,15 +79,7 @@ struct DetailView: View {
             
             
             Spacer()
-// Image timestamp added to image overlay so removed here
-            
-//            HStack {
-//                Label("Receipt Photo Timestamp:", systemImage: "camera")
-//                Text(expense.timeStamp, format: .dateTime.hour().minute().second())
-//            }
-//            .font(.caption)
-//            .foregroundStyle(.secondary)
-//            .padding(.top)
+
             
                         
             Group {
@@ -120,18 +114,14 @@ struct DetailView: View {
             }
             
             Spacer()
-// Show the id of the expense
-            
-//            Text("\(expense.id)")
-//                .font(.caption2)
-//                .foregroundStyle(.secondary)
+
         }
         .padding(.horizontal)
         .navigationTitle(expense.name)
         .task {
             if FileManager().docExist(named: "\(expense.id).jpg") {
                 image = loadImage()
-                time = imageEXIF()
+ //               time = imageEXIF()
             }
         }
     }
