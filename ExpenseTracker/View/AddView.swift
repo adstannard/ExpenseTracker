@@ -24,6 +24,7 @@ struct AddView: View {
     @State private var image: UIImage?
     
     @FocusState private var amountIsFocused: Bool
+    @FocusState private var nameIsFocused: Bool
     
     let types = ["Day Subsistence", "Night Subsistence", "Fuel", "Motor Milage"]
     
@@ -33,10 +34,22 @@ struct AddView: View {
                 Form {
                     Section(header: Text("Expense Details")) {
                         TextField("Name", text: $name)
+                            .focused($nameIsFocused)
                         
                         TextField("Amount", value: $amount, format: .currency(code: "GBP"))
                             .keyboardType(.decimalPad)
                             .focused($amountIsFocused)
+                            .toolbar {
+                                ToolbarItemGroup(placement: .keyboard) {
+                                    Spacer()
+                                    Button {
+                                        nameIsFocused = false
+                                        amountIsFocused = false
+                                    } label: {
+                                        Text("Done")
+                                    }
+                                }
+                            }
                         
                         DatePicker(selection: $expenseDate, in: ...Date.now, displayedComponents: .date) {
                             Text("Expense Date")
@@ -66,13 +79,7 @@ struct AddView: View {
                         }
                     }
                     
-                    ToolbarItem(placement: .keyboard) {
-                        Spacer()
-                        Button("Done") {
-                            amountIsFocused = false
-                        }
-                    
-                    }
+
                     
                     
                     
@@ -137,8 +144,9 @@ struct AddView: View {
                     }
                 }
                 
-                Spacer()
+
             }
+            .ignoresSafeArea(.keyboard)
             .sheet(isPresented: $showPicker) {
                 ImagePicker(sourceType: expenses.source == .library ? .photoLibrary : .camera, selectedImage: $image, timeTaken: $time)
                     .ignoresSafeArea()
