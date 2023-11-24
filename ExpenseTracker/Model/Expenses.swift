@@ -24,6 +24,14 @@ class Expenses: Equatable {
         }
     }
     
+    var source: Source = .library
+    
+    enum Source {
+        case library, camera
+    }
+    
+    
+    
     // Attempt to work with file storage in Document Directory
     
     let savePath = FileManager.documentsDirectory.appendingPathComponent("SavedExpenses")

@@ -22,7 +22,7 @@ struct AddView: View {
     @State private var imageName = "image"
     @State private var showPicker = false
     @State private var image: UIImage?
-    
+      
     let types = ["Day Subsistence", "Night Subsistence", "Fuel", "Motor Milage"]
     
     var body: some View {
@@ -62,17 +62,40 @@ struct AddView: View {
                     }
             }
                 
-                Button {
-                    showPicker.toggle()
-                } label: {
-                    Label("Camera", systemImage: "camera")
-                        .padding()
-                        .frame(height: 45)
-                        .foregroundStyle(.white)
-                        .background(.blue)
-                        .cornerRadius(15)
-                }
+                HStack {
+                    Button {
+                        expenses.source = .camera
+                        if expenses.source == .camera {
+                            showPicker.toggle()
+                        }
+                    } label: {
+                        Label("Camera", systemImage: "camera")
+                            .padding()
+                            .frame(height: 45)
+                            .foregroundStyle(.white)
+                            .background(.blue)
+                            .cornerRadius(15)
+                    }
                 .padding()
+                    
+                    Button {
+                        expenses.source = .library
+                        if expenses.source == .library {
+                            showPicker.toggle()
+                        }
+                    } label: {
+                        Label("Photos", systemImage: "photo.fill")
+                            .padding()
+                            .frame(height: 45)
+                            .foregroundStyle(.white)
+                            .background(.blue)
+                            .cornerRadius(15)
+                    }
+                .padding()
+                    
+                    
+                    
+                }
                 
                 Group {
                     if let image = image {
@@ -98,7 +121,7 @@ struct AddView: View {
                 Spacer()
             }
             .sheet(isPresented: $showPicker) {
-                ImagePicker(sourceType: .camera, selectedImage: $image, timeTaken: $time)
+                ImagePicker(sourceType: expenses.source == .library ? .photoLibrary : .camera, selectedImage: $image, timeTaken: $time)
                     .ignoresSafeArea()
             }
         }
