@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 @Observable
 class Expenses: Equatable {
@@ -46,4 +47,17 @@ class Expenses: Equatable {
             print("Unable to save data")
         }
     }
+    
+    func saveImage(imageName: String, image: UIImage) {
+        if let data = image.jpegData(compressionQuality: 0.3) {
+            let filename = FileManager.documentsDirectory.appendingPathComponent("\(imageName).jpg")
+            try? data.write(to: filename)
+            print("Saved \(imageName).jpg")
+        }
+    }
+    
+    
+    
+    
+    
 }

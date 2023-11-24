@@ -25,14 +25,6 @@ struct AddView: View {
     
     let types = ["Day Subsistence", "Night Subsistence", "Fuel", "Motor Milage"]
     
-    func saveImage(imageName: String, image: UIImage) {
-        if let data = image.jpegData(compressionQuality: 0.3) {
-            let filename = FileManager.documentsDirectory.appendingPathComponent("\(imageName).jpg")
-            try? data.write(to: filename)
-            print("Saved \(imageName).jpg")
-        }
-    }
-
     var body: some View {
         NavigationView {
             VStack {
@@ -64,7 +56,7 @@ struct AddView: View {
                         expenses.save()
                         if image !== nil {
                             imageName = expenses.items.last?.id ?? "image"
-                            saveImage(imageName: imageName, image: image!)
+                            expenses.saveImage(imageName: imageName, image: image!)
                         }
                         dismiss()
                     }
