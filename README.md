@@ -18,8 +18,9 @@ The app should contain only unclassified information and be easy to use. It shou
 
 Need to fix:
 
-1. Image file size (too large)
-2. Ability to delete images
-3. Option to have no image without crash
-4. Overlay timestamp on image
-5. Check timestamp from metadata
+1. Image file size (too large) - changed to compressed JPEG
+2. Ability to delete images - images delete as record deleted
+3. Option to have no image without crash - fixed
+4. Overlay timestamp on image - overlay creaded but displaying timestame from Date
+5. Check timestamp from metadata - timestamp from photolibrary but not camera
+6. Create days since claim
