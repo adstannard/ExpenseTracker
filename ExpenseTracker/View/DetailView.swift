@@ -10,6 +10,7 @@ import SwiftUI
 struct DetailView: View {
     
     var expense: Expense
+    var expenses = Expenses()
     
     let dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
@@ -77,6 +78,13 @@ struct DetailView: View {
                     .font(.caption)
             }
             
+            HStack {
+                Label("Expense Age:", systemImage: "clock")
+                    .font(.headline)
+                Spacer()
+                Text("\(expenses.dayCount(expenseDate: expense.expenseDate)) days (Claim in \(90 - (expenses.dayCount(expenseDate: expense.expenseDate))) days)")
+                    .font(.caption)
+            }
             
             Spacer()
 

@@ -14,7 +14,7 @@ class Expenses: Equatable {
     static func == (lhs: Expenses, rhs: Expenses) -> Bool {
         return lhs.items == rhs.items
     }
-    
+//  Display a running total of the claims
     var totalExpense = 0.0
     
     func expenseTotal() {
@@ -24,13 +24,21 @@ class Expenses: Equatable {
         }
     }
     
-    var source: Source = .library
+    func dayCount(expenseDate: Date) -> Int {
+        let today = Date.now
+        if today > expenseDate {
+            let components = Calendar.current.dateComponents([.day], from: expenseDate, to: today)
+            return components.day!
+        } else {
+            return 0
+        }
+    }
     
+//  Select image source
+    var source: Source = .library
     enum Source {
         case library, camera
     }
-    
-    
     
     // Attempt to work with file storage in Document Directory
     
@@ -73,7 +81,5 @@ class Expenses: Equatable {
             print("File not found")
         }
     }
-    
-    
-    
+
 }
