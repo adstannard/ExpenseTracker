@@ -90,9 +90,9 @@ struct DetailView: View {
                             .clipShape(RoundedRectangle(cornerRadius: /*@START_MENU_TOKEN@*/25.0/*@END_MENU_TOKEN@*/))
                             .frame(minWidth: 0, maxWidth: .infinity)
                             .overlay(
-                                HStack {
+                                VStack {
                                     Label("Receipt Photo Timestamp:", systemImage: "camera")
-                                    Text(expense.timeStamp, format: .dateTime.hour().minute().second())
+                                    Text("\(expense.timeStamp)")
                                 }
                                 .font(.caption)
                                 .padding(5)

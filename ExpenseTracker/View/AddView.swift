@@ -120,6 +120,8 @@ struct AddView: View {
                                     .scaledToFit()
                                     .clipShape(RoundedRectangle(cornerRadius: /*@START_MENU_TOKEN@*/25.0/*@END_MENU_TOKEN@*/))
                                 .frame(minWidth: 0, maxWidth: .infinity)
+                            Text("\(time!)")
+                                .font(.caption2)
                         }
                                 
                     } else {

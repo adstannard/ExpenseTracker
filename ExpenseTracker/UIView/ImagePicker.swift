@@ -59,8 +59,12 @@ struct ImagePicker: UIViewControllerRepresentable {
                 
                 if let asset = asset {
                     if let timeStamp = asset.creationDate {
+                        parent.timeTaken = timeStamp
                         print("Creation Date: \(timeStamp)")
                     }
+                } else {
+                    parent.timeTaken = Date.now
+                    print("Time Stamp Added: \(String(describing: parent.timeTaken))")
                 }
                 
                    
