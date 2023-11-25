@@ -16,11 +16,8 @@ Add your source code to a version control tool (such as GitHub) and include a li
 The app should contain only unclassified information and be easy to use. It should be built using Swift or Kotlin, but you should not pay to have it published or deployed into the app stores(!). The mark-scheme is attached on the right-side of this page, and we expect completion of the project to take around 20 hours.
 
 
-Need to fix:
+Need to add:
 
-1. Image file size (too large) - changed to compressed JPEG
-2. Ability to delete images - images delete as record deleted
-3. Option to have no image without crash - fixed
-4. Overlay timestamp on image - overlay creaded but displaying timestame from Date
-5. Check timestamp from metadata - timestamp from photolibrary but not camera
-6. Create days since claim
+1. Create days since claim
+2. Claimed on JPA check box
+3. Journey association
