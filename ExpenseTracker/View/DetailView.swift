@@ -92,9 +92,9 @@ struct DetailView: View {
                             .overlay(
                                 VStack {
                                     Label("Receipt Photo Timestamp:", systemImage: "camera")
-                                    Text("\(expense.timeStamp)")
+                                    Text("\(expense.timeStamp.formatted(date: .numeric, time: .complete))")
                                 }
-                                .font(.caption)
+                                .font(.caption2)
                                 .padding(5)
                                 .foregroundColor(.white)
                                 .background(Color.black.opacity(0.6))
