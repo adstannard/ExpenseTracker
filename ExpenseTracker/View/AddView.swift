@@ -78,15 +78,7 @@ struct AddView: View {
                             dismiss()
                         }
                     }
-                    
-
-                    
-                    
-                    
-                    
-                    
                 }
- 
                 
                 HStack {
                     Button {
@@ -118,9 +110,6 @@ struct AddView: View {
                             .cornerRadius(15)
                     }
                 .padding()
-                    
-                    
-                    
                 }
                 
                 Group {
@@ -131,7 +120,6 @@ struct AddView: View {
                                     .scaledToFit()
                                     .clipShape(RoundedRectangle(cornerRadius: /*@START_MENU_TOKEN@*/25.0/*@END_MENU_TOKEN@*/))
                                 .frame(minWidth: 0, maxWidth: .infinity)
- //                           Text(time!, format: .dateTime.hour().minute().second())
                         }
                                 
                     } else {
@@ -143,8 +131,6 @@ struct AddView: View {
                             .padding(.horizontal)
                     }
                 }
-                
-
             }
             .ignoresSafeArea(.keyboard)
             .sheet(isPresented: $showPicker) {
